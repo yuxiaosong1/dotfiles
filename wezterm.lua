@@ -26,8 +26,8 @@ config.ssh_domains = { { name = 'ssh-192.168.220.128', remote_address = '192.168
 config.launch_menu = {
 	{ label = 'ssh-192.168.220.128', domain = { DomainName = 'ssh-192.168.220.128' } },
 	--{ label = 'ssh-192.168.164.129', args = { 'ssh', 'yuxiaosong@192.168.164.129' } },
-	{ label = 'mingw64', args = { 'cmd', '/c', 'D:\\Software\\msys2\\msys2\\msys2_shell.cmd -defterm -here -no-start -mingw64' } },
-	{ label = 'powershell', args = { 'powershell.exe' } }
+	{ label = 'mingw64', args = { 'cmd', '/c', 'D:\\Software\\msys2\\msys2\\msys2_shell.cmd -defterm -here -no-start -mingw64' }, domain = { DomainName = 'local' } },
+	{ label = 'powershell', args = { 'powershell.exe' }, domain = { DomainName = 'local' } }
 }
 -- only show what i want
 table.insert(config.keys, { key = '`', mods = 'ALT', action = act.ShowLauncherArgs{ flags = 'LAUNCH_MENU_ITEMS' } })
