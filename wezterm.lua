@@ -12,17 +12,19 @@ config.default_prog = { 'cmd', '/c', 'D:\\Software\\msys2\\msys2\\msys2_shell.cm
 -- other hotkey:
 --	<C-+>/<C-->: increase/decrease font size
 config.font = wezterm.font 'Iosevka NFM'
+--config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14.0
 config.color_scheme = 'nord'
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 ------------------------------------ font/colorscheme ------------------------------------
 
 --------------------------------------- ssh domain ---------------------------------------
-config.ssh_domains = { { name = 'ssh-192.168.164.129', remote_address = '192.168.164.129', username = 'yuxiaosong' } }
+config.ssh_domains = { { name = 'ssh-192.168.220.128', remote_address = '192.168.220.128', username = 'yuxiaosong' } }
 --------------------------------------- ssh domain ---------------------------------------
 
 ---------------------------------------- launcher ----------------------------------------
 config.launch_menu = {
-	{ label = 'ssh-192.168.164.129', domain = { DomainName = 'ssh-192.168.164.129' } },
+	{ label = 'ssh-192.168.220.128', domain = { DomainName = 'ssh-192.168.220.128' } },
 	--{ label = 'ssh-192.168.164.129', args = { 'ssh', 'yuxiaosong@192.168.164.129' } },
 	{ label = 'mingw64', args = { 'cmd', '/c', 'D:\\Software\\msys2\\msys2\\msys2_shell.cmd -defterm -here -no-start -mingw64' } },
 	{ label = 'powershell', args = { 'powershell.exe' } }
@@ -78,7 +80,12 @@ table.insert(config.keys, { key = 'q', mods = 'ALT', action = act.QuickSelect })
 table.insert(config.keys, { key = '0', mods = 'ALT', action = act.PaneSelect })
 table.insert(config.keys, { key = 'z', mods = 'CTRL', action = act.TogglePaneZoomState })
 table.insert(config.keys, { key = 'h', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } })
-table.insert(config.keys, { key = 'v', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } })
+table.insert(config.keys, { key = 'v', mods = 'CTRL|ALT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } })
+table.insert(config.keys, { key = 'w', mods = 'CTRL', action = act.CloseCurrentPane { confirm = true } })
+table.insert(config.keys, { key = 'h', mods = 'ALT', action = act.ActivatePaneDirection 'Left' })
+table.insert(config.keys, { key = 'j', mods = 'ALT', action = act.ActivatePaneDirection 'Down' })
+table.insert(config.keys, { key = 'k', mods = 'ALT', action = act.ActivatePaneDirection 'Up' })
+table.insert(config.keys, { key = 'l', mods = 'ALT', action = act.ActivatePaneDirection 'Right' })
 ------------------------------------------ pane ------------------------------------------
 
 return config
